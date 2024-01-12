@@ -1,12 +1,10 @@
 package ru.gb.hw2;
 
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
 import static ru.gb.hw2.Group.*;
 
 @Component
@@ -38,30 +36,25 @@ public class StudentRepository {
                 .findFirst()
                 .orElse(null);
     }
-
     public Student getByName(String name){
         return allStudents.stream()
                 .filter(it -> Objects.equals(it.getName(),name))
                 .findFirst()
                 .orElse(null);
     }
-
     public List<Student>getByGroup(Group group){
         return allStudents
                 .stream()
                 .filter(student -> student.getGroup()==group)
                 .collect(Collectors.toList());
     }
-
     public List<Student> addStudent(Student student){
       allStudents.add(student);
       return allStudents;
     }
 
-
     public List<Student> deleteById(long id){
         allStudents.removeIf(student -> student.getId()==id);
         return allStudents;
     }
-
 }

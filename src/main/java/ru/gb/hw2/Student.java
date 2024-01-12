@@ -7,7 +7,6 @@ public class Student {
     private static long idCounter= 1L;
     private String name;
     private long id;
-
     private Group group;
 
     public Student(Group group, String name) {
